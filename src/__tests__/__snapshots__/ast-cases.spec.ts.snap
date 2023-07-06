@@ -1,0 +1,331 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ast   in(path, "value1", "value2", another) || 2 <= people   
+ 1`] = `
+{
+  "operator": "||",
+  "parameters": [
+    {
+      "field": {
+        "type": "PATH",
+        "value": [
+          {
+            "type": "IDENTIFIER",
+            "value": "path",
+          },
+        ],
+      },
+      "parameters": [
+        {
+          "type": "STRING",
+          "value": "value1",
+        },
+        {
+          "type": "STRING",
+          "value": "value2",
+        },
+        {
+          "type": "PATH",
+          "value": [
+            {
+              "type": "IDENTIFIER",
+              "value": "another",
+            },
+          ],
+        },
+      ],
+      "type": "FN_IN",
+    },
+    {
+      "operator": "<=",
+      "parameters": [
+        {
+          "type": "NUMBER",
+          "value": "2",
+        },
+        {
+          "type": "PATH",
+          "value": [
+            {
+              "type": "IDENTIFIER",
+              "value": "people",
+            },
+          ],
+        },
+      ],
+      "type": "COMPARISON",
+    },
+  ],
+  "type": "LOGIC",
+}
+`;
+
+exports[`ast 1 > 2 || (( size(PATH) )) 1`] = `
+{
+  "operator": "||",
+  "parameters": [
+    {
+      "operator": ">",
+      "parameters": [
+        {
+          "type": "NUMBER",
+          "value": "1",
+        },
+        {
+          "type": "NUMBER",
+          "value": "2",
+        },
+      ],
+      "type": "COMPARISON",
+    },
+    {
+      "parameters": [
+        {
+          "parameters": [
+            {
+              "field": {
+                "type": "PATH",
+                "value": [
+                  {
+                    "type": "IDENTIFIER",
+                    "value": "PATH",
+                  },
+                ],
+              },
+              "type": "FN_SIZE",
+            },
+          ],
+          "type": "GROUPED_OPERATION",
+        },
+      ],
+      "type": "GROUPED_OPERATION",
+    },
+  ],
+  "type": "LOGIC",
+}
+`;
+
+exports[`ast between(path, "value1", "value2") 1`] = `
+{
+  "field": {
+    "type": "PATH",
+    "value": [
+      {
+        "type": "IDENTIFIER",
+        "value": "path",
+      },
+    ],
+  },
+  "parameters": [
+    {
+      "type": "STRING",
+      "value": "value1",
+    },
+    {
+      "type": "STRING",
+      "value": "value2",
+    },
+  ],
+  "type": "FN_BETWEEN",
+}
+`;
+
+exports[`ast dogs.$.names[1][2][3].$.name = "maggie" || startsWith(user.name, username) 1`] = `
+{
+  "operator": "||",
+  "parameters": [
+    {
+      "operator": "=",
+      "parameters": [
+        {
+          "type": "PATH",
+          "value": [
+            {
+              "type": "IDENTIFIER",
+              "value": "dogs",
+            },
+            {
+              "type": "ARRAY_DOT_NOTATION",
+              "value": ".$.",
+            },
+            {
+              "type": "IDENTIFIER",
+              "value": "names",
+            },
+            {
+              "type": "BRACKET_NOTATION",
+              "value": "[1]",
+            },
+            {
+              "type": "BRACKET_NOTATION",
+              "value": "[2]",
+            },
+            {
+              "type": "BRACKET_NOTATION",
+              "value": "[3]",
+            },
+            {
+              "type": "ARRAY_DOT_NOTATION",
+              "value": ".$.",
+            },
+            {
+              "type": "IDENTIFIER",
+              "value": "name",
+            },
+          ],
+        },
+        {
+          "type": "STRING",
+          "value": "maggie",
+        },
+      ],
+      "type": "COMPARISON",
+    },
+    {
+      "field": {
+        "type": "PATH",
+        "value": [
+          {
+            "type": "IDENTIFIER",
+            "value": "user",
+          },
+          {
+            "type": "DOT_NOTATION",
+            "value": ".",
+          },
+          {
+            "type": "IDENTIFIER",
+            "value": "name",
+          },
+        ],
+      },
+      "parameters": [
+        {
+          "type": "PATH",
+          "value": [
+            {
+              "type": "IDENTIFIER",
+              "value": "username",
+            },
+          ],
+        },
+      ],
+      "type": "FN_STARTS_WITH",
+    },
+  ],
+  "type": "LOGIC",
+}
+`;
+
+exports[`ast exists(maggie) || 1 >= 18 1`] = `
+{
+  "operator": "||",
+  "parameters": [
+    {
+      "field": {
+        "type": "PATH",
+        "value": [
+          {
+            "type": "IDENTIFIER",
+            "value": "maggie",
+          },
+        ],
+      },
+      "type": "FN_EXISTS",
+    },
+    {
+      "operator": ">=",
+      "parameters": [
+        {
+          "type": "NUMBER",
+          "value": "1",
+        },
+        {
+          "type": "NUMBER",
+          "value": "18",
+        },
+      ],
+      "type": "COMPARISON",
+    },
+  ],
+  "type": "LOGIC",
+}
+`;
+
+exports[`ast regex(path, /^Antonio/mig) 1`] = `
+{
+  "field": {
+    "type": "PATH",
+    "value": [
+      {
+        "type": "IDENTIFIER",
+        "value": "path",
+      },
+    ],
+  },
+  "parameters": [
+    {
+      "type": "REGEX",
+      "value": "/^Antonio/mig",
+    },
+  ],
+  "type": "FN_REGEX",
+}
+`;
+
+exports[`ast size(PATH) 1`] = `
+{
+  "field": {
+    "type": "PATH",
+    "value": [
+      {
+        "type": "IDENTIFIER",
+        "value": "PATH",
+      },
+    ],
+  },
+  "type": "FN_SIZE",
+}
+`;
+
+exports[`ast startsWith(path, "value1") 1`] = `
+{
+  "field": {
+    "type": "PATH",
+    "value": [
+      {
+        "type": "IDENTIFIER",
+        "value": "path",
+      },
+    ],
+  },
+  "parameters": [
+    {
+      "type": "STRING",
+      "value": "value1",
+    },
+  ],
+  "type": "FN_STARTS_WITH",
+}
+`;
+
+exports[`ast type(path, "value1") 1`] = `
+{
+  "field": {
+    "type": "PATH",
+    "value": [
+      {
+        "type": "IDENTIFIER",
+        "value": "path",
+      },
+    ],
+  },
+  "parameters": [
+    {
+      "type": "STRING",
+      "value": "value1",
+    },
+  ],
+  "type": "FN_TYPE",
+}
+`;

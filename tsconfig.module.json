@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig",
+  "compilerOptions": {
+    "target": "esnext",
+    "outDir": "out/module",
+    "module": "esnext",
+    "noUnusedLocals": true
+  },
+  "exclude": ["node_modules/**"]
+}
