@@ -37,61 +37,89 @@ To use the RAQLParser, you need to instantiate it and then feed in the RAQL stri
       "operator": "||",
       "parameters": [
         {
+          "operator": "=",
+          "parameters": [
+            {
+              "type": "PATH",
+              "value": [
+                {
+                  "type": "IDENTIFIER",
+                  "value": "dogs",
+                },
+                {
+                  "type": "ARRAY_DOT_NOTATION",
+                  "value": ".$.",
+                },
+                {
+                  "type": "IDENTIFIER",
+                  "value": "names",
+                },
+                {
+                  "type": "BRACKET_NOTATION",
+                  "value": "[1]",
+                },
+                {
+                  "type": "BRACKET_NOTATION",
+                  "value": "[2]",
+                },
+                {
+                  "type": "BRACKET_NOTATION",
+                  "value": "[3]",
+                },
+                {
+                  "type": "ARRAY_DOT_NOTATION",
+                  "value": ".$.",
+                },
+                {
+                  "type": "IDENTIFIER",
+                  "value": "name",
+                },
+              ],
+            },
+            {
+              "type": "STRING",
+              "value": "maggie",
+            },
+          ],
+          "type": "COMPARISON",
+        },
+        {
           "field": {
             "type": "PATH",
             "value": [
               {
                 "type": "IDENTIFIER",
-                "value": "path",
+                "value": "user",
+              },
+              {
+                "type": "DOT_NOTATION",
+                "value": ".",
+              },
+              {
+                "type": "IDENTIFIER",
+                "value": "name",
               },
             ],
           },
           "parameters": [
             {
-              "type": "STRING",
-              "value": "value1",
-            },
-            {
-              "type": "STRING",
-              "value": "value2",
-            },
-            {
               "type": "PATH",
               "value": [
                 {
                   "type": "IDENTIFIER",
-                  "value": "another",
+                  "value": "username",
                 },
               ],
             },
           ],
-          "type": "FN_IN",
-        },
-        {
-          "operator": "<=",
-          "parameters": [
-            {
-              "type": "NUMBER",
-              "value": "2",
-            },
-            {
-              "type": "PATH",
-              "value": [
-                {
-                  "type": "IDENTIFIER",
-                  "value": "people",
-                },
-              ],
-            },
-          ],
-          "type": "COMPARISON",
+          "type": "FN_STARTS_WITH",
         },
       ],
     });
 
 // === Query to AST examples ===
 
-examples[`RAQLParser 1 > 2 || (( size(PATH) )) 1`] = `
+examples['1 > 2 || (( size(PATH) ))'] = `
 {
   "operator": "||",
   "parameters": [
@@ -136,7 +164,7 @@ examples[`RAQLParser 1 > 2 || (( size(PATH) )) 1`] = `
 }
 `;
 
-examples[`RAQLParser between(path, "value1", "value2") 1`] = `
+examples['between(path, "value1", "value2")'] = `
 {
   "field": {
     "type": "PATH",
@@ -161,7 +189,7 @@ examples[`RAQLParser between(path, "value1", "value2") 1`] = `
 }
 `;
 
-examples[`RAQLParser dogs.$.names[1][2][3].$.name = "maggie" || startsWith(user.name, username) 1`] = `
+examples['dogs.$.names[1][2][3].$.name = "maggie" || startsWith(user.name, username)'] = `
 {
   "operator": "||",
   "parameters": [
@@ -248,7 +276,7 @@ examples[`RAQLParser dogs.$.names[1][2][3].$.name = "maggie" || startsWith(user.
 }
 `;
 
-examples[`RAQLParser exists(maggie) || 1 >= 18 1`] = `
+examples['exists(maggie) || 1 >= 18'] = `
 {
   "operator": "||",
   "parameters": [
@@ -283,7 +311,7 @@ examples[`RAQLParser exists(maggie) || 1 >= 18 1`] = `
 }
 `;
 
-examples[`RAQLParser regex(path, /^Antonio/mig) 1`] = `
+examples['regex(path, /^Antonio/mig)'] = `
 {
   "field": {
     "type": "PATH",
@@ -304,7 +332,7 @@ examples[`RAQLParser regex(path, /^Antonio/mig) 1`] = `
 }
 `;
 
-examples[`RAQLParser size(PATH) 1`] = `
+examples['size(PATH)'] = `
 {
   "field": {
     "type": "PATH",
@@ -319,7 +347,7 @@ examples[`RAQLParser size(PATH) 1`] = `
 }
 `;
 
-examples[`RAQLParser startsWith(path, "value1") 1`] = `
+examples['startsWith(path, "value1")'] = `
 {
   "field": {
     "type": "PATH",
@@ -340,7 +368,7 @@ examples[`RAQLParser startsWith(path, "value1") 1`] = `
 }
 `;
 
-examples[`RAQLParser type(path, "value1") 1`] = `
+examples['type(path, "value1")'] = `
 {
   "field": {
     "type": "PATH",
